@@ -1,31 +1,36 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Задача: Написать программу, которая из имеющегося массива строк 
+// формирует массив из строк, длинна которых меньше либо равна 3 символа. 
+// Первоначальный массив можно ввести с клавиатуры, либо задать на старте 
+//выполнения алгоритма. При решении не рекомендуется пользоваться 
+// коллекциями, лучше обойтись исключительно массивами. Примеры:
+// ["hello", "2", "world", ":-)"] -> ["2", ":-)"]
+// ["1234", "1567", "-2", "computer science"] -> ["-2" ]
+// ["Russia", "Denmark", "Kazan"] -> []
+
+string[] arr1 = new string[4] {"hello", "2", "world", ":-)"};
+string[] arr2 = new string[arr1.Length];
+
+LongerLessFour(arr1, arr2);
+PrintArray(arr2);
 
 
-
-int[,] FillMatrix(int rows, int colums)
+void LongerLessFour(string[] arr1, string[] arr2)
 {
-    int[,] matrix = new int[rows, colums];
-    Random rnd = new Random();
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    int count = 0;
+    for (int i = 0; i < arr1.Length; i++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+    if(arr1[i].Length <= 3)
         {
-            matrix[i, j] = rnd.Next(1, 6);
+        arr2[count] = arr1[i];
+        count++;
         }
     }
-    return matrix;
 }
-
-void PrintMatrix(int[,] matrix)
+void PrintArray(string[] array)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < array.Length; i++)
     {
-       // Console.Write("[");
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            Console.Write($"{matrix[i, j]}, ");
-        }
-        Console.WriteLine();
+        Console.Write($"{array[i]} ");
     }
+    Console.WriteLine();
 }
